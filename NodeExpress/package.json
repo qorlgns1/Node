@@ -1,0 +1,17 @@
+{
+  "name": "expressweb",
+  "version": "1.0.0",
+  "description": "기훈이랑 웹 서버 만들기",
+  "main": "app.js",
+  "scripts": {
+    "start": "nodemon app"
+  },
+  "author": "배기훈",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.4"
+  }
+}
