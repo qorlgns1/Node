@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>파일 업로드</title>
+</head>
+<body>
+   <form id="form" action="/upload" method="post" 
+      enctype="multipart/form-data">
+      <input type="text" name="title" id="title"/>
+      <input type="file" name="image" id="image" multiple='multiple'/>
+      <button type="submit">파일 업로드</button>
+   </form>
+   
+   <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+   <script>
+      document.getElementById('form').addEventListener('submit',
+         (e) => {
+            e.preventDefault(); //원래 기능을 제거
+            //폼 데이터 생성
+            const formdata = new FormData();
+            //파일을 하나만 선택 가능한 경우 사용
+            //formdata.append('image', e.target.image.files[0]);
+            
+            //파일을 여러개 선택 가능한 경우 사용
+            var files = e.target.image.files;
+            for(var idx = 0; idx < files.length; idx++){
+               formdata.append('image', e.target.image.files[idx]);
+            }
+            formdata.append('title', e.target.title.value);
+            //ajax 요청
+            axios.post('/upload', formdata);
+         });
+   </script>
+</body>
+</html>
